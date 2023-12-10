@@ -10,42 +10,43 @@ void Add_one(T &value) {
 }
 
 template <typename T>
-void Print(T *arr) {
-  for (int i = 0; i < 10; ++i) {
+void Print(T *arr, size_t len) {
+  for (size_t i = 0; i < len; ++i) {
     std::cout << arr[i] << " ";
   }
   std::cout << std::endl;
 }
 
 int main() {
+  size_t len = 15;
   {
     std::cout << "-----------------INT-----------------" << std::endl;
-    int *int_arr = new int[10];
-    for (int i = 0; i < 10; ++i) {
+    int *int_arr = new int[len];
+    for (int i = 0; i < len; ++i) {
       int_arr[i] = 0;
     }
-    iter(int_arr, 10, Add_one<int>);
-    Print(int_arr);
+    iter(int_arr, len, Add_one<int>);
+    Print(int_arr, len);
     delete[] int_arr;
   }
   {
     std::cout << "-----------------CHAR-----------------" << std::endl;
-    char *char_arr = new char[10];
-    for (int i = 0; i < 10; ++i) {
+    char *char_arr = new char[len];
+    for (int i = 0; i < len; ++i) {
       char_arr[i] = 'a';
     }
-    iter(char_arr, 10, Add_one<char>);
-    Print(char_arr);
+    iter(char_arr, len, Add_one<char>);
+    Print(char_arr, len);
     delete[] char_arr;
   }
   {
     std::cout << "-----------------LONG-----------------" << std::endl;
-    long *long_arr = new long[10];
-    for (int i = 0; i < 10; ++i) {
+    long *long_arr = new long[len];
+    for (int i = 0; i < len; ++i) {
       long_arr[i] = 100;
     }
-    iter(long_arr, 10, Add_one<long>);
-    Print(long_arr);
+    iter(long_arr, len, Add_one<long>);
+    Print(long_arr, len);
     delete[] long_arr;
   }
   return 0;
