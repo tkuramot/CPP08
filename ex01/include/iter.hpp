@@ -7,7 +7,11 @@
 
 #include <iostream>
 
-template <typename T>
-void iter(T *arr, size_t len);
+template <typename T, typename F>
+void iter(T *arr, size_t len, F func) {
+  for (size_t i = 0; i < len; ++i) {
+    func(arr[i]);
+  }
+}
 
 #endif // A_OUT_INCLUDE_ITER_HPP_
