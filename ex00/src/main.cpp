@@ -2,89 +2,118 @@
 // Created by k.t. on 2023/12/06.
 //
 
-#include "whatever.hpp"
+#include "easyfind.hpp"
 #include <iostream>
+#include <list>
+#include <vector>
 
 int main() {
   {
-    std::cout << "================SWAP================" << std::endl;
+    std::cout << "----------------list----------------" << std::endl;
+    std::list<int> lst;
+    for (int i = 0; i < 10; ++i) {
+      std::cout << i << " ";
+      lst.push_back(i);
+    }
+    std::cout << std::endl;
     {
-      std::cout << "----------------INT----------------" << std::endl;
-      int a = 10;
-      int b = 20;
-      std::cout << "before a: " << a << std::endl;
-      std::cout << "before b: " << b << std::endl;
-      ::swap(a, b);
-      std::cout << "after a: " << a << std::endl;
-      std::cout << "after b: " << b << std::endl;
+      int target = 5;
+      std::list<int>::const_iterator itr = Easyfind(lst, target);
+      if (itr == lst.end()) {
+        std::cout << target << " not found" << std::endl;
+      } else {
+        std::cout << target << " found" << std::endl;
+      }
     }
     {
-      std::cout << "----------------CHAR----------------" << std::endl;
-      char a = 'a';
-      char b = 'b';
-      std::cout << "before a: " << a << std::endl;
-      std::cout << "before b: " << b << std::endl;
-      ::swap(a, b);
-      std::cout << "after a: " << a << std::endl;
-      std::cout << "after b: " << b << std::endl;
+      int target = 100;
+      std::list<int>::const_iterator itr = Easyfind(lst, target);
+      if (itr == lst.end()) {
+        std::cout << target << " not found" << std::endl;
+      } else {
+        std::cout << target << " found" << std::endl;
+      }
     }
     {
-      std::cout << "----------------BOOL----------------" << std::endl;
-      bool a = true;
-      bool b = false;
-      std::cout << "before a: " << a << std::endl;
-      std::cout << "before b: " << b << std::endl;
-      ::swap(a, b);
-      std::cout << "after a: " << a << std::endl;
-      std::cout << "after b: " << b << std::endl;
-    }
-  }
-  {
-    std::cout << "================MIN================" << std::endl;
-    {
-      std::cout << "----------------INT----------------" << std::endl;
-      int a = 10;
-      int b = 20;
-      std::cout << "a = " << a << ", b = " << b << std::endl;
-      std::cout << "min(a, b) = " << ::min(a, b) << std::endl;
-    }
-    {
-      std::cout << "----------------CHAR----------------" << std::endl;
-      char a = 'a';
-      char b = 'b';
-      std::cout << "a = " << a << ", b = " << b << std::endl;
-      std::cout << "min(a, b) = " << ::min(a, b) << std::endl;
-    }
-    {
-      std::cout << "----------------BOOL----------------" << std::endl;
-      bool a = true;
-      bool b = false;
-      std::cout << "a = " << a << ", b = " << b << std::endl;
-      std::cout << "min(a, b) = " << ::min(a, b) << std::endl;
+      int target = 9;
+      std::list<int>::const_iterator itr = Easyfind(lst, target);
+      if (itr == lst.end()) {
+        std::cout << target << " not found" << std::endl;
+      } else {
+        std::cout << target << " found" << std::endl;
+      }
     }
   }
   {
-    std::cout << "================MAX================" << std::endl;
+    std::cout << "----------------vector----------------" << std::endl;
+    std::vector<int> lst;
+    for (int i = 0; i < 10; ++i) {
+      std::cout << i << " ";
+      lst.push_back(i);
+    }
+    std::cout << std::endl;
     {
-      std::cout << "----------------INT----------------" << std::endl;
-      int a = 10;
-      int b = 20;
-      std::cout << "a = " << a << ", b = " << b << std::endl;
-      std::cout << "max(a, b) = " << ::max(a, b) << std::endl;
+      int target = 5;
+      std::vector<int>::const_iterator itr = Easyfind(lst, target);
+      if (itr == lst.end()) {
+        std::cout << target << " not found" << std::endl;
+      } else {
+        std::cout << target << " found" << std::endl;
+      }
     }
     {
-      std::cout << "----------------CHAR----------------" << std::endl;
-      char a = 'a';
-      char b = 'b';
-      std::cout << "a = " << a << ", b = " << b << std::endl;
-      std::cout << "max(a, b) = " << ::max(a, b) << std::endl;
+      int target = 100;
+      std::vector<int>::const_iterator itr = Easyfind(lst, target);
+      if (itr == lst.end()) {
+        std::cout << target << " not found" << std::endl;
+      } else {
+        std::cout << target << " found" << std::endl;
+      }
     }
     {
-      std::cout << "----------------BOOL----------------" << std::endl;
-      bool a = true;
-      bool b = false;
-      std::cout << "a = " << a << ", b = " << b << std::endl;
-      std::cout << "max(a, b) = " << ::max(a, b) << std::endl;
+      int target = 9;
+      std::vector<int>::const_iterator itr = Easyfind(lst, target);
+      if (itr == lst.end()) {
+        std::cout << target << " not found" << std::endl;
+      } else {
+        std::cout << target << " found" << std::endl;
+      }
+    }
+  }
+  {
+    std::cout << "----------------vector----------------" << std::endl;
+    std::vector<int> lst;
+    for (int i = 0; i < 10; ++i) {
+      std::cout << i << " ";
+      lst.push_back(i);
+    }
+    std::cout << std::endl;
+    {
+      int target = 5;
+      std::vector<int>::const_iterator itr = Easyfind(lst, target);
+      if (itr == lst.end()) {
+        std::cout << target << " not found" << std::endl;
+      } else {
+        std::cout << target << " found" << std::endl;
+      }
+    }
+    {
+      int target = 100;
+      std::vector<int>::const_iterator itr = Easyfind(lst, target);
+      if (itr == lst.end()) {
+        std::cout << target << " not found" << std::endl;
+      } else {
+        std::cout << target << " found" << std::endl;
+      }
+    }
+    {
+      int target = 9;
+      std::vector<int>::const_iterator itr = Easyfind(lst, target);
+      if (itr == lst.end()) {
+        std::cout << target << " not found" << std::endl;
+      } else {
+        std::cout << target << " found" << std::endl;
+      }
     }
   }
   return 0;
