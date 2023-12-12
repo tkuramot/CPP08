@@ -2,52 +2,26 @@
 // Created by k.t. on 2023/12/10.
 //
 
-#include "iter.hpp"
-
-template <typename T>
-void Add_one(T &value) {
-  ++value;
-}
-
-template <typename T>
-void Print(T *arr, size_t len) {
-  for (size_t i = 0; i < len; ++i) {
-    std::cout << arr[i] << " ";
-  }
-  std::cout << std::endl;
-}
+#include "Span.hpp"
+#include <iostream>
 
 int main() {
-  size_t len = 15;
   {
-    std::cout << "-----------------INT-----------------" << std::endl;
-    int *int_arr = new int[len];
-    for (int i = 0; i < len; ++i) {
-      int_arr[i] = 0;
-    }
-    iter(int_arr, len, Add_one<int>);
-    Print(int_arr, len);
-    delete[] int_arr;
+    Span span(5);
+    span.AddNumber(5);
+    span.AddNumber(3);
+    span.AddNumber(17);
+    span.AddNumber(9);
+    span.AddNumber(11);
+    std::cout << span.ShortestSpan() << std::endl;
+    std::cout << span.LongestSpan() << std::endl;
   }
   {
-    std::cout << "-----------------CHAR-----------------" << std::endl;
-    char *char_arr = new char[len];
-    for (int i = 0; i < len; ++i) {
-      char_arr[i] = 'a';
-    }
-    iter(char_arr, len, Add_one<char>);
-    Print(char_arr, len);
-    delete[] char_arr;
-  }
-  {
-    std::cout << "-----------------LONG-----------------" << std::endl;
-    long *long_arr = new long[len];
-    for (int i = 0; i < len; ++i) {
-      long_arr[i] = 100;
-    }
-    iter(long_arr, len, Add_one<long>);
-    Print(long_arr, len);
-    delete[] long_arr;
+    std::vector<int> v(10, 10);
+    Span span(10);
+    span.AddNumberRange(v.begin(), v.end());
+    std::cout << span.ShortestSpan() << std::endl;
+    std::cout << span.LongestSpan() << std::endl;
   }
   return 0;
 }
