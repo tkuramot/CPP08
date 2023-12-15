@@ -38,7 +38,7 @@ int Span::ShortestSpan() throw(Span::TooFewElements) {
   int shortest_span = std::numeric_limits<int>::max();
   for (std::list<int>::iterator itr = temp.begin(); itr != --temp.end();
        ++itr) {
-    shortest_span = std::min(shortest_span, std::abs(*itr - *next(itr)));
+    shortest_span = std::min(shortest_span, std::abs(*++itr - *--itr));
   }
   return shortest_span;
 }
@@ -51,7 +51,7 @@ int Span::LongestSpan() throw(Span::TooFewElements) {
   int longest_span = std::numeric_limits<int>::min();
   for (std::list<int>::iterator itr = temp.begin(); itr != --temp.end();
        ++itr) {
-    longest_span = std::max(longest_span, std::abs(*itr - *next(itr)));
+    longest_span = std::max(longest_span, std::abs(*++itr - *--itr));
   }
   return longest_span;
 }
