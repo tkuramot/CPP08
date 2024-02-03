@@ -2,10 +2,24 @@
 // Created by k.t. on 2023/12/06.
 //
 
-#include "easyfind.hpp"
 #include <iostream>
 #include <list>
 #include <vector>
+
+#include "easyfind.hpp"
+
+template <typename T, typename U>
+void test(T lst, U target, bool can_be_found) {
+  typename T::const_iterator itr = Easyfind(lst, target);
+  bool was_found = itr != lst.end();
+  std::cout << target << " should " << (can_be_found ? "" : "not ")
+            << "be found" << std::endl;
+  if (was_found == can_be_found) {
+    std::cout << "ok" << std::endl;
+  } else {
+    std::cout << "test failed" << std::endl;
+  }
+}
 
 int main() {
   {
@@ -18,30 +32,15 @@ int main() {
     std::cout << std::endl;
     {
       int target = 5;
-      std::list<int>::const_iterator itr = Easyfind(lst, target);
-      if (itr == lst.end()) {
-        std::cout << target << " not found" << std::endl;
-      } else {
-        std::cout << target << " found" << std::endl;
-      }
+      test(lst, target, true);
     }
     {
       int target = 100;
-      std::list<int>::const_iterator itr = Easyfind(lst, target);
-      if (itr == lst.end()) {
-        std::cout << target << " not found" << std::endl;
-      } else {
-        std::cout << target << " found" << std::endl;
-      }
+      test(lst, target, false);
     }
     {
       int target = 9;
-      std::list<int>::const_iterator itr = Easyfind(lst, target);
-      if (itr == lst.end()) {
-        std::cout << target << " not found" << std::endl;
-      } else {
-        std::cout << target << " found" << std::endl;
-      }
+      test(lst, target, true);
     }
   }
   {
@@ -54,30 +53,15 @@ int main() {
     std::cout << std::endl;
     {
       int target = 5;
-      std::vector<int>::const_iterator itr = Easyfind(lst, target);
-      if (itr == lst.end()) {
-        std::cout << target << " not found" << std::endl;
-      } else {
-        std::cout << target << " found" << std::endl;
-      }
+      test(lst, target, true);
     }
     {
       int target = 100;
-      std::vector<int>::const_iterator itr = Easyfind(lst, target);
-      if (itr == lst.end()) {
-        std::cout << target << " not found" << std::endl;
-      } else {
-        std::cout << target << " found" << std::endl;
-      }
+      test(lst, target, false);
     }
     {
       int target = 9;
-      std::vector<int>::const_iterator itr = Easyfind(lst, target);
-      if (itr == lst.end()) {
-        std::cout << target << " not found" << std::endl;
-      } else {
-        std::cout << target << " found" << std::endl;
-      }
+      test(lst, target, true);
     }
   }
   {
@@ -90,30 +74,15 @@ int main() {
     std::cout << std::endl;
     {
       int target = 5;
-      std::vector<int>::const_iterator itr = Easyfind(lst, target);
-      if (itr == lst.end()) {
-        std::cout << target << " not found" << std::endl;
-      } else {
-        std::cout << target << " found" << std::endl;
-      }
+      test(lst, target, true);
     }
     {
       int target = 100;
-      std::vector<int>::const_iterator itr = Easyfind(lst, target);
-      if (itr == lst.end()) {
-        std::cout << target << " not found" << std::endl;
-      } else {
-        std::cout << target << " found" << std::endl;
-      }
+      test(lst, target, false);
     }
     {
       int target = 9;
-      std::vector<int>::const_iterator itr = Easyfind(lst, target);
-      if (itr == lst.end()) {
-        std::cout << target << " not found" << std::endl;
-      } else {
-        std::cout << target << " found" << std::endl;
-      }
+      test(lst, target, true);
     }
   }
   return 0;
