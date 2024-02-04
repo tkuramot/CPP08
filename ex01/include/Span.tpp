@@ -56,13 +56,12 @@ T Span<T>::ShortestSpan() {
   if (vec_.size() <= 1) {
     throw std::runtime_error("too few elements to calculate shortest span");
   }
+
+  std::vector<T> new_vec = vec_;
+  std::sort(new_vec.begin(), new_vec.end());
   T span = std::numeric_limits<T>::max();
-  for (typename std::vector<T>::const_iterator i = vec_.begin();
-       i != vec_.end(); ++i) {
-    for (typename std::vector<T>::const_iterator j = i + 1; j != vec_.end();
-         ++j) {
-      span = std::min(span, std::max(*i, *j) - std::min(*i, *j));
-    }
+  for (size_t i = 0; i < new_vec.size() - 1; ++i) {
+    span = std::min(span, new_vec[i + 1] - new_vec[i]);
   }
   return span;
 }
