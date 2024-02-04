@@ -6,8 +6,7 @@ NAME		:= a.out
 NAME_DEBUG	:= debug.a.out
 SRCDIR		:= src
 SRCS		:= \
-	src/main.cpp \
-	src/Span.cpp
+	src/main.cpp
 OBJDIR		:= objs
 OBJS		:= $(subst $(SRCDIR), $(OBJDIR), $(SRCS:.cpp=.o))
 OBJS_DEBUG	:= $(subst $(SRCDIR), $(OBJDIR), $(SRCS:.cpp=.o.debug))

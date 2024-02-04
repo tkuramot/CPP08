@@ -7,43 +7,25 @@
 
 #include <list>
 
+template <typename T>
 class Span {
-public:
-  class TooManyElements : public std::exception {
-  public:
-    const char *what() const throw();
-  };
-  class TooFewElements : public std::exception {
-  public:
-    const char *what() const throw();
-  };
+ public:
+  Span();
   Span(unsigned int n);
-  Span(const Span &obj);
+  Span(const Span<T> &obj);
   ~Span();
-  Span &operator=(const Span &obj);
+  Span &operator=(const Span<T> &obj);
 
-  void AddNumber(int n) throw(TooManyElements);
-  template <typename T>
-  void AddNumberRange(T begin, T end) throw(Span::TooManyElements);
-  int ShortestSpan() throw(TooFewElements);
-  int LongestSpan() throw(TooFewElements);
+  void AddNumber(T n);
+  template <class InputIt>
+  void AddNumberRange(InputIt begin, InputIt end);
+  T ShortestSpan();
+  T LongestSpan();
 
-private:
-  unsigned int n_;
-  std::list<int> list_;
+ private:
+  std::vector<T> vec_;
 };
 
-template <typename T>
-void Span::AddNumberRange(T begin, T end) throw(Span::TooManyElements) {
-  if (list_.size() >= n_) {
-    throw Span::TooManyElements();
-  }
-  if (list_.size() + static_cast<size_t>(std::distance(begin, end)) > n_) {
-    throw Span::TooManyElements();
-  }
-  for (T itr = begin; itr != end; ++itr) {
-    list_.push_back(*itr);
-  }
-}
+#include "Span.tpp"
 
-#endif // A_OUT_INCLUDE_SPAN_HPP_
+#endif  // A_OUT_INCLUDE_SPAN_HPP_
