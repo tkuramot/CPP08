@@ -8,9 +8,12 @@
 #include <deque>
 #include <stack>
 
-template <typename T> class MutantStack : public std::stack<T> {
-public:
+template <typename T>
+class MutantStack : public std::stack<T> {
+ public:
   typedef typename std::stack<T>::container_type::iterator iterator;
+  typedef
+      typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
 
   MutantStack();
   ~MutantStack();
@@ -19,8 +22,10 @@ public:
 
   iterator begin();
   iterator end();
-  iterator rbegin();
-  iterator rend();
+  reverse_iterator rbegin();
+  reverse_iterator rend();
 };
 
-#endif // A_OUT__MUTANTSTACK_HPP_
+#include "MutantStack.tpp"
+
+#endif  // A_OUT__MUTANTSTACK_HPP_
