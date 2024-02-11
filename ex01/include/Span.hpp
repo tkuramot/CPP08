@@ -5,7 +5,7 @@
 #ifndef A_OUT_INCLUDE_SPAN_HPP_
 #define A_OUT_INCLUDE_SPAN_HPP_
 
-#include <list>
+#include <vector>
 
 template <typename T>
 class Span {
